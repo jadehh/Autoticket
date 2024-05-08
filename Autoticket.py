@@ -1,7 +1,7 @@
 # coding: utf-8
 from json import loads
 from os.path import exists
-from pickle import dump, load
+from pickle import dump
 from time import sleep, time
 # import io # 用于py2.7时解注释
 
@@ -9,6 +9,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import fickling
+
 # import sys # 用于py2.7时解注释
 
 # reload(sys) # 用于py2.7时解注释
@@ -71,7 +73,7 @@ class Concert(object):
         
     def set_cookie(self):
         try:
-            cookies = load(open("cookies.pkl", "rb"))  # 载入cookie
+            cookies = fickling.load(open("cookies.pkl", "rb"))  # 载入cookie
             for cookie in cookies:
                 cookie_dict = {
                     'domain': '.damai.cn',  # 必须有，不然就是假登录
